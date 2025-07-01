@@ -1,0 +1,119 @@
+body {
+  text-align: center;
+  background: #f9f5f2;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #4b3b2a;
+}
+#title {
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: #8b4e4e;
+}
+
+.card__container {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  perspective: 1400px;
+}
+
+.card {
+  max-width: 400px;
+  max-height: 600px;
+  width: 80vw;
+  height: 120vw;
+  transform-style: preserve-3d;
+  transform: rotateX(65deg);
+  transition: all 1s ease;
+}
+
+.open .card {
+  transform: rotateX(0deg);
+}
+
+.card__panel {
+  border: 1px solid #ddd;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  backface-visibility: visible;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  border-radius: 10px;
+  background: white;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Front */
+.card__panel--front {
+  backface-visibility: hidden;
+  background: #b6c6a7;
+  z-index: 2;
+}
+
+.open .card__panel--front {
+  transform: rotate3d(0, 1, 0, -170deg);
+}
+
+/* Inside left */
+.card__panel--inside-left {
+  background: #fff8f0;
+  z-index: 1;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.open .card__panel--inside-left {
+  transform: rotate3d(0, 1, 0, -170deg);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Inside right */
+.card__panel--inside-right {
+  border-left: none;
+  background: #fffdfb;
+  z-index: -1;
+  overflow-y: auto;
+  padding: 2rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: left;
+  display: block;
+}
+
+.image-wrapper {
+  text-align: center;
+}
+
+.ingame-photo {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.image-caption {
+  font-style: italic;
+  color: #8b4e4e;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  transform: scaleX(-1);
+}
+
+#typedMessage {
+  white-space: pre-wrap;
+}
